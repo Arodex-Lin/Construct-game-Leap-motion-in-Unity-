@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class TurnHandMenu : MonoBehaviour
 {
     LeapProvider LeapProvider;
+    bool menuopen = false;
     void Start()
     {
          LeapProvider = FindObjectOfType<LeapProvider>() as LeapProvider;
@@ -19,19 +20,27 @@ public class TurnHandMenu : MonoBehaviour
     void Update()
     {
         Frame frame = LeapProvider.CurrentFrame;
+        menuopen = GetMenuOpen(frame);
+        OpenMenu(menuopen);
+    }
+
+    void OpenMenu(bool menuopen)
+    {
+    }
+    
+
+    bool GetMenuOpen(Frame frame)
+    {
         foreach(var hand in frame.Hands)
         {
             if(hand.IsLeft)
             {
-                if(HandGestures.isPalmNormalSameDirectionWith(hand,new Vector3(0,1,0)))
+                if (HandGestures.isPalmNormalSameDirectionWith(hand, new Vector3(0, 1, 0)))
                 {
-                    print("yesssssssss");
+                    return true;
                 }
             }
         }
-    }
-    public static void yew()
-    {
-        print("kkk");
+        return false;
     }
 }

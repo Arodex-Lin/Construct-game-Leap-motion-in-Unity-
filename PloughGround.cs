@@ -14,8 +14,8 @@ public class PloughGround : MonoBehaviour
     List<PlaceGround.Ground> grounds;
     //public PlaceGround.Ground Ground;
     bool Once = true;
-    public bool arab = false;
-    public bool plant = false;
+    static public bool arab = false;
+    static public bool plant = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -77,7 +77,22 @@ public class PloughGround : MonoBehaviour
     {
         return GameObject.Find("ScriptHanger").GetComponent<PlaceGround>().groundA;
     }
-
+    static public void SetArabTrue()
+    {
+        arab = true;
+    }
+    static public void SetArabFalse()
+    {
+        arab = false;
+    }
+    static public void SetPlantTrue()
+    {
+        plant = true;
+    }
+    static public void SetPlantFalse()
+    {
+        plant = false;
+    }
     public IEnumerator moveOnce()
     {
         yield return new WaitForSeconds(1f);

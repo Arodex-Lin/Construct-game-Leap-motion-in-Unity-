@@ -16,7 +16,7 @@ public class PlaceGround : MonoBehaviour
     public int listcount;
     public List<Ground> groundA;
     //public static Ground[] groundA;
-    public bool available = true;
+    static public bool available = false;
     public bool test = false;
     RaycastHit hit;
     public LayerMask LayerMask; //µØÃæµÄÕÚÕÖ
@@ -219,6 +219,14 @@ public class PlaceGround : MonoBehaviour
         return false;
     }
 
+    static public void SetAviailableTrue()
+    {
+        available = true;
+    }
+    static public void SetAviailableFalse()
+    {
+        available = false;
+    }
     public IEnumerator moveOnce()
     {
         yield return new WaitForSeconds(1f);

@@ -11,6 +11,7 @@ public class SelectSquare : MonoBehaviour
     LeapProvider LeapProvider;
     LineRenderer line;
     RaycastHit hit;
+    static public bool available = false;
     public List<PlaceGround.Ground> groundList;
     public PlaceGround.Ground nowSquare;
     public Material chosenMaterial;
@@ -29,10 +30,13 @@ public class SelectSquare : MonoBehaviour
 
     void Update()
     {
-        groundList = GetNowGroundList();//获取当前地板结构体列表
-        Frame frame = LeapProvider.CurrentFrame;
-        nowSquare = OnChosen(EmitRay(frame));//获取当前选择的地板，设为被选择的材质，发射射线
-        index = FindIndex(nowSquare, groundList);
+        if (available)
+        {
+            groundList = GetNowGroundList();//获取当前地板结构体列表
+            Frame frame = LeapProvider.CurrentFrame;
+            nowSquare = OnChosen(EmitRay(frame));//获取当前选择的地板，设为被选择的材质，发射射线
+            index = FindIndex(nowSquare, groundList);
+        }
     }
 
     private int FindIndex(PlaceGround.Ground nowSquare, List<PlaceGround.Ground> groundList)
@@ -113,6 +117,14 @@ public class SelectSquare : MonoBehaviour
     }
 
 
+    static public void SetAviailableTrue()
+    {
+        available = true;
+    }
+    static public void SetAviailableFalse()
+    {
+        available = false;
+    }
     List<PlaceGround.Ground> GetNowGroundList()//返回地板结构体列表
     {
         //return PlaceGround.groundA;
