@@ -5,7 +5,7 @@ using Leap;
 using Leap.Unity;
 using System;
 using HandGuesterNameSpace;
-
+using UnityEngine.UI;
 
 public class TurnHandMenu : MonoBehaviour
 {
@@ -29,5 +29,9 @@ public class TurnHandMenu : MonoBehaviour
                 }
             }
         }
+    }
+    public static void yew()
+    {
+        print("kkk");
     }
 }

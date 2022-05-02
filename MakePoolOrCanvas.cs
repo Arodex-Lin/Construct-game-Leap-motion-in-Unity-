@@ -7,6 +7,8 @@ using Leap.Unity;
 public class MakePoolOrCanvas : MonoBehaviour
 {
     LeapProvider provider;
+    public HandModelBase leftHandModel;
+    public HandModelBase rightHandModel;
 
     private const float displacement_sensitive = 0.015f;
     protected float handForwardDegree = 30;

@@ -8,6 +8,8 @@ using System;
 public class PlaceObjects : MonoBehaviour
 {
     LeapProvider provider;
+    public HandModelBase leftHandModel;
+    public HandModelBase rightHandModel;
     public GameObject building1;
     private const float displacement_sensitive = 0.015f;
     const float smallestVelocity = 0.1f, deltaVelocity = 0.5f;
