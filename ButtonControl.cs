@@ -13,4 +13,25 @@ public class ButtonControl : MonoBehaviour
         PloughGround.SetArabFalse();
         PloughGround.SetPlantFalse();
     }
+    public static void SetSelectGround()
+    {
+        PlaceGround.SetAviailableFalse();
+        SelectSquare.SetAviailableTrue();
+        PloughGround.SetArabFalse();
+        PloughGround.SetPlantFalse();
+    }
+    public static void SetArable()
+    {
+        PlaceGround.SetAviailableFalse();
+        SelectSquare.SetAviailableTrue();
+        PloughGround.SetArabTrue();
+        PloughGround.SetPlantFalse();
+    }
+    public static void SetPlant()
+    {
+        PlaceGround.SetAviailableFalse();
+        SelectSquare.SetAviailableTrue();
+        PloughGround.SetArabFalse();
+        PloughGround.SetPlantTrue();
+    }
 }
