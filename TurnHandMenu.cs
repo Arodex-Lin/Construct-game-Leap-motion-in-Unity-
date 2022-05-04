@@ -12,9 +12,9 @@ public class TurnHandMenu : MonoBehaviour
     LeapProvider LeapProvider;
     public GameObject ButtonPlaceGround , ButtonSelectGround, ButtonSetArable, ButtonSetPlant;
     Vector3 offset1 = new Vector3(0,0,0.2f);
-    Vector3 offset2 = new Vector3(0.2f,0,0.2f);
-    Vector3 offset3 = new Vector3(0.4f,0,0.2f);
-    Vector3 offset4 = new Vector3(0.6f,0,0.2f);
+    Vector3 offset2 = new Vector3(0.15f,0,0.2f);
+    Vector3 offset3 = new Vector3(0.3f,0,0.2f);
+    Vector3 offset4 = new Vector3(0.45f,0,0.2f);
     bool menuopen = false;
     void Start()
     {

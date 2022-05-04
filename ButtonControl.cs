@@ -8,6 +8,7 @@ public class ButtonControl : MonoBehaviour
 
     public static void SetPlaceGround()
     {
+        print(1);
         PlaceGround.SetAviailableTrue();
         SelectSquare.SetAviailableFalse();
         PloughGround.SetArabFalse();
