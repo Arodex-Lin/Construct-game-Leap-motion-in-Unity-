@@ -11,10 +11,10 @@ public class TurnHandMenu : MonoBehaviour
 {
     LeapProvider LeapProvider;
     public GameObject ButtonPlaceGround , ButtonSelectGround, ButtonSetArable, ButtonSetPlant;
-    Vector3 offset1 = new Vector3(0,0,0.2f);
-    Vector3 offset2 = new Vector3(0.15f,0,0.2f);
-    Vector3 offset3 = new Vector3(0.3f,0,0.2f);
-    Vector3 offset4 = new Vector3(0.45f,0,0.2f);
+    Vector3 offset1 = new Vector3(0,0,0.3f);
+    Vector3 offset2 = new Vector3(0.3f,0,0.3f);
+    Vector3 offset3 = new Vector3(0.6f,0,0.3f);
+    Vector3 offset4 = new Vector3(0.9f,0,0.3f);
     bool menuopen = false;
     void Start()
     {
@@ -36,16 +36,24 @@ public class TurnHandMenu : MonoBehaviour
         {
             foreach(var hand in frame.Hands)
             {
+                
                 if (hand.IsLeft)
                 {
                     palmPos = UnityVectorExtension.ToVector3(hand.PalmPosition);
                 }
             }
             ButtonPlaceGround.transform.position = palmPos + offset1;
-            ButtonSelectGround.transform.position = palmPos + offset2;
-            ButtonSetArable.transform.position = palmPos + offset3;
-            ButtonSetPlant.transform.position = palmPos + offset4;
+            //ButtonSelectGround.transform.position = palmPos + offset2;
+            ButtonSetArable.transform.position = palmPos + offset2;
+            ButtonSetPlant.transform.position = palmPos + offset3;
             //ButtonPlaceGround.transform.Rotate(-80, 0, 180);
+        }
+        else
+        {
+            ButtonPlaceGround.transform.position = new Vector3(-0.1f, -2.5f, -0.5f);
+            ButtonSelectGround.transform.position = new Vector3(0.1f, -2.5f, -0.5f);
+            ButtonSetArable.transform.position = new Vector3(0.3f, -2.5f, -0.5f);
+            ButtonSetPlant.transform.position = new Vector3(0.5f, -2.5f, -0.5f);
         }
     }
     

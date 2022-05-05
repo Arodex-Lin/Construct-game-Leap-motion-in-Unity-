@@ -38,6 +38,7 @@ public class PlaceGround : MonoBehaviour
     void Update()
     {
         listcount = groundA.Count;
+        
         if (test)
         {
             test = false;
@@ -53,11 +54,12 @@ public class PlaceGround : MonoBehaviour
             if (afterPlace)
             {
                 afterPlace = false;
-                nowToPlace = Instantiate(ground[UnityEngine.Random.Range(0, ground.Length)], new Vector3(0, 0, 0), Quaternion.identity);
+                nowToPlace = Instantiate(ground[UnityEngine.Random.Range(0, ground.Length)], new Vector3(0, -1, 0), Quaternion.identity);
                 nowToPlace.transform.Rotate(new Vector3(0, 90 * UnityEngine.Random.Range(0, 5), 0));//随机旋转
             }//每次随机选择地板样式
             castOnGround(frame);//调用投影函数
         }
+         
     }
 
     
@@ -85,16 +87,13 @@ public class PlaceGround : MonoBehaviour
     {
         public GameObject ground;
         public State State;
-        public int fuck;
 
-        public void ffi() => fuck = 5;
         public void SetArable() => State = State.Arable;
 
         public Ground(GameObject ground, State state, int i)
         {
             this.ground = ground;
             State = state;
-            fuck = i;
         }
 
         public void setNothing() => State = State.Nothing;
@@ -107,6 +106,7 @@ public class PlaceGround : MonoBehaviour
         {
             if(hand.IsRight&&!afterPlace)//右手并且处于放置状态，实时发射线投影地面
             {
+
                 int nowState = getNowState(nowToPlace);
                 Ray ray = new Ray(new Vector3(hand.WristPosition.ToVector3().x, hand.WristPosition.ToVector3().y + 0.04f, hand.WristPosition.ToVector3().z), hand.Direction.ToVector3().normalized);
                 //Ray ray = new Ray(new Vector3(hand.WristPosition.ToVector3().x, hand.WristPosition.ToVector3().y + 0.04f, hand.WristPosition.ToVector3().z), new Vector3(0,0,0));
@@ -155,7 +155,6 @@ public class PlaceGround : MonoBehaviour
                     //Ground ground = new Ground();
                     Ground ground;
                     ground.ground = nowToPlace;
-                    ground.fuck = 1;
                     //ground.setNothing();
                     //ground.setArable();
                     ground.State = State.Nothing;

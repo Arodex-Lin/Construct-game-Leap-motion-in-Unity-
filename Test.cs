@@ -16,7 +16,6 @@ public class Test : MonoBehaviour
         var lisst = placeGround.groundA;
         //lisst[0].ffi();
         //lisst.Add(new PlaceGround.Ground(null, PlaceGround.State.Arable, 10));
-        grounds[0].ffi();
         //grounds[0].fuck = 10;
         grounds[0] = new PlaceGround.Ground(grounds[0].ground, grounds[0].State, 10);
     }

@@ -4,19 +4,31 @@ using UnityEngine;
 
 public class TestButton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         
     }
+
     private void OnCollisionEnter(Collision collision)
     {
-        print("Fuck you mother fucker");
+        switch(gameObject.name)
+        {
+            case "PlaceGround":
+                print("PlaceGround");
+                ButtonControl.SetPlaceGround();
+                break;
+            case "SelectGround":
+                print("SelectGround");
+                ButtonControl.SetSelectGround();
+                break;
+            case "SetArable":
+                print("SetArable");
+                ButtonControl.SetArable();
+                break;
+            case "SetPlant":
+                ButtonControl.SetPlant();
+                print("SetPlant");
+                break;
+        }
     }
 }

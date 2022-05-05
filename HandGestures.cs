@@ -16,6 +16,7 @@ using Leap;
         private const float displacement_sensitive = 0.015f;
         const float smallestVelocity = 0.1f, deltaVelocity = 0.5f;
         public static bool Once = true;
+        static float deltaCloseFinger = 0.1f;
         static float handForwardDegree = 30;
         bool rotateOnce = true;
 
@@ -66,9 +67,26 @@ using Leap;
         {
             return Vector3.Angle (UnityVectorExtension.ToVector3 (a), UnityVectorExtension.ToVector3 (b));
         }
+        public static bool isCloseHand(Hand hand)     //是否握拳 
+        {
+            List<Finger> listOfFingers = hand.Fingers;
+            int count = 0;
+            for (int f = 0; f < listOfFingers.Count; f++)
+            { //循环遍历所有的手~~
+                Finger finger = listOfFingers[f];
+                if ((finger.TipPosition - hand.PalmPosition).Magnitude < deltaCloseFinger)    // Magnitude  向量的长度 。是(x*x+y*y+z*z)的平方根。
+                                                                                              //float deltaCloseFinger = 0.05f;
+                {
+                    count++;
+                    //if (finger.Type == Finger.FingerType.TYPE_THUMB)
+                    //Debug.Log ((finger.TipPosition - hand.PalmPosition).Magnitude);
+                }
+            }
+            return (count == 5);
+        }
 
 
-    
+
 
     }
 

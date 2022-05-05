@@ -37,6 +37,10 @@ public class SelectSquare : MonoBehaviour
             nowSquare = OnChosen(EmitRay(frame));//获取当前选择的地板，设为被选择的材质，发射射线
             index = FindIndex(nowSquare, groundList);
         }
+        else
+        {
+            line.SetWidth(0,0);
+        }
     }
 
     private int FindIndex(PlaceGround.Ground nowSquare, List<PlaceGround.Ground> groundList)
