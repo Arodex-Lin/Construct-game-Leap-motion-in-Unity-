@@ -5,25 +5,40 @@ using UnityEngine;
 public class GetCKG : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject toBeGet;
-    void Start()
+//    public GameObject toBeGet;
+//    void Start()
+//    {
+//        print(1);
+//    }
+//
+//    // Update is called once per frame
+//    void Update()
+//    {
+//        for(float i =0.001f;i<=1;i+=0.001f)
+//        {
+//            
+//            gameObject.transform.localScale = new Vector3(i,gameObject.transform.localScale.y,i);
+//            if(Mathf.Abs(gameObject.GetComponent<BoxCollider>().size.x * gameObject.transform.localScale.x-0.5f)<0.01f)
+//            {
+//                print(gameObject.GetComponent<BoxCollider>().size.x * gameObject.transform.localScale.x);
+//                print(i);
+//            }
+//        }
+//        
+//    }
+    public static float GetFloatToScale(GameObject Object)
     {
-        print(1);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        for(float i =0.001f;i<=1;i+=0.001f)
+        for (float i = 0.001f; i <= 1; i += 0.001f)
         {
-            
-            gameObject.transform.localScale = new Vector3(i,gameObject.transform.localScale.y,i);
-            if(Mathf.Abs(gameObject.GetComponent<BoxCollider>().size.x * gameObject.transform.localScale.x-0.5f)<0.01f)
+
+            Object.transform.localScale = new Vector3(i, Object.transform.localScale.y, i);
+            if (Mathf.Abs(Object.GetComponent<BoxCollider>().size.x * Object.transform.localScale.x - 0.5f) < 0.01f)
             {
-                print(gameObject.GetComponent<BoxCollider>().size.x * gameObject.transform.localScale.x);
-                print(i);
+                print(Object.GetComponent<BoxCollider>().size.x * Object.transform.localScale.x);
+                return i;
             }
         }
-        
-    }
+        return 0;
+
+    } 
 }

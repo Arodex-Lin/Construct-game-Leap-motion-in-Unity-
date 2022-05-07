@@ -10,8 +10,9 @@ using HandGuesterNameSpace;
 public class PlaceGround : MonoBehaviour
 {
     LeapProvider provider;
-    
-    public GameObject[] ground; //准备被放置地面的预制体
+
+    //public static List<GameObject> ground = new List<GameObject>();
+    public static GameObject ground;
 
     public int listcount;
     public List<Ground> groundA;
@@ -54,8 +55,12 @@ public class PlaceGround : MonoBehaviour
             if (afterPlace)
             {
                 afterPlace = false;
-                nowToPlace = Instantiate(ground[UnityEngine.Random.Range(0, ground.Length)], new Vector3(0, -1, 0), Quaternion.identity);
-                nowToPlace.transform.Rotate(new Vector3(0, 90 * UnityEngine.Random.Range(0, 5), 0));//随机旋转
+                //nowToPlace = Instantiate(ground[UnityEngine.Random.Range(0, ground.Count)], new Vector3(0, -1, 0), Quaternion.identity);
+                //nowToPlace.transform.Rotate(new Vector3(0, 90 * UnityEngine.Random.Range(0, 5), 0));//随机旋转
+                nowToPlace = Instantiate(ground, new Vector3(0, -1, 0), Quaternion.identity);
+                float nur = GetCKG.GetFloatToScale(nowToPlace);
+                nowToPlace.transform.localScale = new Vector3(nur, nowToPlace.transform.localScale.y, nur);
+
             }//每次随机选择地板样式
             castOnGround(frame);//调用投影函数
         }
