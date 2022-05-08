@@ -14,6 +14,7 @@ public class PlaceGround : MonoBehaviour
     //public static List<GameObject> ground = new List<GameObject>();
     public static GameObject ground;
 
+    public List<GameObject> obi = new List<GameObject>();
     public int listcount;
     public List<Ground> groundA;
     //public static Ground[] groundA;
@@ -33,6 +34,10 @@ public class PlaceGround : MonoBehaviour
         groundA = new List<Ground>();
         provider = FindObjectOfType<LeapProvider>() as LeapProvider;
         afterPlace = true;
+        foreach(var objec in obi)
+        {
+            objec.SetActive(false);
+        }
     }
     
     // Update is called once per frame
