@@ -17,13 +17,14 @@ public class PlaceGround : MonoBehaviour
     public List<GameObject> obi = new List<GameObject>();
     public int listcount;
     public List<Ground> groundA;
-    //public static Ground[] groundA;
     static public bool available = false;
+    public static bool toDisappear = false;//bool flag = true;
     public bool test = false;
+    bool startPlace = false;
     RaycastHit hit;
     public LayerMask LayerMask; //地面的遮罩
     GameObject nowToPlace;
-
+    float hiddenYPosition = 0.43f;
     bool afterPlace = true; //放置完地面后重置当前选中的随机地面
     bool Once= true; //判断手势的间隔
 
@@ -34,10 +35,7 @@ public class PlaceGround : MonoBehaviour
         groundA = new List<Ground>();
         provider = FindObjectOfType<LeapProvider>() as LeapProvider;
         afterPlace = true;
-        foreach(var objec in obi)
-        {
-            objec.SetActive(false);
-        }
+        SetBool(false);
     }
     
     // Update is called once per frame
@@ -56,23 +54,59 @@ public class PlaceGround : MonoBehaviour
         }
         if (available)
         {
+            SetBool(true);
+            startPlace = true;
+        }
+        else
+        {
+            startPlace = false;
+        }
+        
+        if (startPlace)
+        {
             Frame frame = provider.CurrentFrame;
             if (afterPlace)
             {
-                afterPlace = false;
+
+                if (ground != null)
+                {
+                    afterPlace = false;
+                }
                 //nowToPlace = Instantiate(ground[UnityEngine.Random.Range(0, ground.Count)], new Vector3(0, -1, 0), Quaternion.identity);
                 //nowToPlace.transform.Rotate(new Vector3(0, 90 * UnityEngine.Random.Range(0, 5), 0));//随机旋转
-                nowToPlace = Instantiate(ground, new Vector3(0, -1, 0), Quaternion.identity);
+                print(ground.gameObject.name);
+                nowToPlace = Instantiate(ground, new Vector3(0, 0, 0), Quaternion.identity);
+                print(nowToPlace.transform.position);
                 float nur = GetCKG.GetFloatToScale(nowToPlace);
                 nowToPlace.transform.localScale = new Vector3(nur, nowToPlace.transform.localScale.y, nur);
 
             }//每次随机选择地板样式
             castOnGround(frame);//调用投影函数
         }
-         
+        if (toDisappear)
+        {
+            SetBool(false);
+        }
+        
     }
 
     
+    void SetBool(bool toset)
+    {
+        foreach(var obj in obi)
+        {
+            obj.gameObject.SetActive(toset);
+        }
+        
+        //if((toset && obi[0].gameObject.transform.position.y<0)||(!toset && obi[0].gameObject.transform.position.y > 0))
+        //{
+        //    foreach(var obj in obi)
+        //    {
+        //        obj.gameObject.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y * -1, obj.transform.position.z);
+        //    }
+        //}
+        
+    }
 
     public enum State//地板状态枚举
     {

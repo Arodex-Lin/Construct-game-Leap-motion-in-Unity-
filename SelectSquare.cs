@@ -90,7 +90,7 @@ public class SelectSquare : MonoBehaviour
             }
             else
             {
-                ground.ground.gameObject.GetComponent<MeshRenderer>().material = originMaterial;
+               ground.ground.gameObject.GetComponent<MeshRenderer>().material = originMaterial;
             }
         }
         return ret;

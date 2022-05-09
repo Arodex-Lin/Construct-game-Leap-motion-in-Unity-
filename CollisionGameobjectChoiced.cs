@@ -6,18 +6,11 @@ public class CollisionGameobjectChoiced : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        //bool flag = true;
-        //foreach (var obj in PlaceGround.ground)
-        //{
-        //    if(obj.gameObject.name == gameObject.name)
-        //    {
-        //        flag = false;
-        //    }
-        //}
-        //if (flag)
-        //{
-        //    PlaceGround.ground.Add(gameObject);
-        //}
         PlaceGround.ground = gameObject;
+        print(collision.gameObject.name);
+        if(collision.gameObject.name != "Plane")
+        {
+            PlaceGround.toDisappear = true;
+        }
     }
 }
