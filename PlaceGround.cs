@@ -74,9 +74,7 @@ public class PlaceGround : MonoBehaviour
                 }
                 //nowToPlace = Instantiate(ground[UnityEngine.Random.Range(0, ground.Count)], new Vector3(0, -1, 0), Quaternion.identity);
                 //nowToPlace.transform.Rotate(new Vector3(0, 90 * UnityEngine.Random.Range(0, 5), 0));//Ëæ»úÐý×ª
-                print(ground.gameObject.name);
                 nowToPlace = Instantiate(ground, new Vector3(0, 0, 0), Quaternion.identity);
-                print(nowToPlace.transform.position);
                 float nur = GetCKG.GetFloatToScale(nowToPlace);
                 nowToPlace.transform.localScale = new Vector3(nur, nowToPlace.transform.localScale.y, nur);
 

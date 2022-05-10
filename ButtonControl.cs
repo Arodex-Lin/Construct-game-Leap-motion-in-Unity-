@@ -8,6 +8,7 @@ public class ButtonControl : MonoBehaviour
 
     public static void SetPlaceGround()
     {
+        PlaceGround.toDisappear = false;
         PlaceGround.SetAviailableTrue();
         SelectSquare.SetAviailableFalse();
         PloughGround.SetArabFalse();
@@ -15,7 +16,6 @@ public class ButtonControl : MonoBehaviour
     }
     public static void SetSelectGround()
     {
-        PlaceGround.toDisappear = false;
         PlaceGround.SetAviailableFalse();
         SelectSquare.SetAviailableTrue();
         PloughGround.SetArabFalse();
