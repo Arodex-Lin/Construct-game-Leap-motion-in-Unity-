@@ -27,18 +27,18 @@ public class PloughGround : MonoBehaviour
     {
         if (arab)
         {
-            IfGroundIs(PlaceGround.State.Nothing,PlaceGround.State.Arable);
+            IfGroundIs(PlaceGround.State.Nothing,PlaceGround.State.Arable);//地面如果为Nothing，设置为Arable
         }
         if (plant)
         {
-            IfGroundIs(PlaceGround.State.Arable,PlaceGround.State.Planted);
+            IfGroundIs(PlaceGround.State.Arable,PlaceGround.State.Planted);//同理
         }
     }
 
-    void IfGroundIs(PlaceGround.State ifstate,PlaceGround.State wantstate)
+    void IfGroundIs(PlaceGround.State ifstate,PlaceGround.State wantstate)//执行犁地或撒种等对地面的操作，从ifstate设置到wantstate
     {
         Frame frame = LeapProvider.CurrentFrame;
-        grounds = GetNowGroundList();
+        grounds = GetNowGroundList();//获取地面结构体列表
         nowindex = GameObject.Find("ScriptHanger").GetComponent<SelectSquare>().index;
         if (nowindex >= 0)
         {
@@ -49,7 +49,7 @@ public class PloughGround : MonoBehaviour
                 {
                     if (NowSquare.getState() == ifstate)
                     {
-                        grounds[nowindex] = new PlaceGround.Ground(NowSquare.ground, wantstate, 0);
+                        grounds[nowindex] = new PlaceGround.Ground(NowSquare.ground, wantstate);
                     }
                 }
             }
@@ -77,7 +77,7 @@ public class PloughGround : MonoBehaviour
     {
         return GameObject.Find("ScriptHanger").GetComponent<PlaceGround>().groundA;
     }
-    static public void SetArabTrue()
+    static public void SetArabTrue()//以下四个函数都是通过按钮改变对应的布尔值
     {
         arab = true;
     }

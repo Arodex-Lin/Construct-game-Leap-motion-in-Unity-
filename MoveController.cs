@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Leap;
 using Leap.Unity;
-
+//无用，测试时使用
 public class MoveController : MonoBehaviour
 {
     Controller controller;

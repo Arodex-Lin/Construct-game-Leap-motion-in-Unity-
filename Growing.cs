@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//此脚本管理地面上种子的成熟，用的方法很不妥，不过暂时不用管也不用看
 public class Growing : MonoBehaviour
 {
     int listcount;

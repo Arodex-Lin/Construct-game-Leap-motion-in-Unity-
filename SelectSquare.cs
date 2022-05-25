@@ -34,16 +34,16 @@ public class SelectSquare : MonoBehaviour
         {
             groundList = GetNowGroundList();//获取当前地板结构体列表
             Frame frame = LeapProvider.CurrentFrame;
-            nowSquare = OnChosen(EmitRay(frame));//获取当前选择的地板，设为被选择的材质，发射射线
+            nowSquare = OnChosen(EmitRay(frame));//获取当前选择的地板，设为被选择的材质，发射射线.（EmitRay函数返回一个V3，OnChosen把V3处的地面更换材质）
             index = FindIndex(nowSquare, groundList);
         }
         else
         {
-            line.SetWidth(0,0);
+            line.SetWidth(0,0);//关闭射线（宽度设为0）
         }
     }
 
-    private int FindIndex(PlaceGround.Ground nowSquare, List<PlaceGround.Ground> groundList)
+    private int FindIndex(PlaceGround.Ground nowSquare, List<PlaceGround.Ground> groundList)//获取当前地面在列表中的序号  
     {
         foreach(var plane in groundList)
         {
@@ -64,7 +64,7 @@ public class SelectSquare : MonoBehaviour
         line.SetWidth(startWidth, endWidth);//设置起始，结束宽度
         foreach (var hand in frame.Hands)
         {
-            if (hand.IsRight)
+            if (hand.IsRight)//右手发射射线，画线
             {
                 Ray ray = new Ray(new Vector3(hand.WristPosition.ToVector3().x, hand.WristPosition.ToVector3().y + 0.04f, hand.WristPosition.ToVector3().z), hand.Direction.ToVector3().normalized);
                 bool rayCast = Physics.Raycast(ray, out hit, 5000);
@@ -96,7 +96,7 @@ public class SelectSquare : MonoBehaviour
         return ret;
     }
 
-    Vector3 GetFinalPos(RaycastHit hit, Hand hand)//返回射线终点坐标，吸附
+    Vector3 GetFinalPos(RaycastHit hit, Hand hand)//返回射线终点坐标，外加吸附
     {
         Vector3 endPos = hand.Direction.ToVector3().normalized * 100000;
         float minndis = 1e6f;
